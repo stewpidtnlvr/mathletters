@@ -1,6 +1,6 @@
-var https = require('https');
+var http = require('https');
 
-https.createServer(onRequest).listen(3000);
+http.createServer(onRequest).listen(3000);
 
 function onRequest(client_req, client_res) {
   console.log('serve: ' + client_req.url);
@@ -13,7 +13,7 @@ function onRequest(client_req, client_res) {
     headers: client_req.headers
   };
 
-  var proxy = https.request(options, function (res) {
+  var proxy = http.request(options, function (res) {
     client_res.writeHead(res.statusCode, res.headers)
     res.pipe(client_res, {
       end: true
