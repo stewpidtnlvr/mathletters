@@ -16,7 +16,11 @@ jobs:
         with:
           node-version: 12
       - run: npm ci
+      - run: npm i express
+      - run: npm i express
+      - run: npm i morgan
       - run: npm test
+      
 
   publish-npm:
     needs: build
